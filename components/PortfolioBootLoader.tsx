@@ -6,7 +6,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import PortfolioPage from "./PortfolioPage";
 
 const ENGINE_FAIL_OPEN_MS = 5200;
-type AmbientSoundState = "pending" | "playing" | "blocked" | "muted";
 
 export default function PortfolioBootLoader() {
   const shellRef = useRef<HTMLDivElement>(null);
@@ -15,39 +14,14 @@ export default function PortfolioBootLoader() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const readyRef = useRef(false);
   const [isReady, setIsReady] = useState(false);
-  const [soundState, setSoundState] = useState<AmbientSoundState>("pending");
 
   const startAmbientSound = useCallback(() => {
     const audio = audioRef.current;
-    if (!audio) {
-      setSoundState("blocked");
-      return;
-    }
+    if (!audio || !audio.paused) return;
 
     audio.volume = 0.24;
-    const playPromise = audio.play();
-    if (!playPromise) {
-      setSoundState("playing");
-      return;
-    }
-
-    playPromise
-      .then(() => setSoundState("playing"))
-      .catch(() => setSoundState("blocked"));
+    void audio.play().catch(() => undefined);
   }, []);
-
-  const toggleAmbientSound = useCallback(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (!audio.paused) {
-      audio.pause();
-      setSoundState("muted");
-      return;
-    }
-
-    startAmbientSound();
-  }, [startAmbientSound]);
 
   const handleEngineReady = useCallback(() => {
     if (readyRef.current) return;
@@ -55,6 +29,18 @@ export default function PortfolioBootLoader() {
     setIsReady(true);
     startAmbientSound();
   }, [startAmbientSound]);
+
+  useEffect(() => {
+    if (!isReady) return;
+
+    const handleFirstScroll = () => startAmbientSound();
+    window.addEventListener("scroll", handleFirstScroll, {
+      passive: true,
+      once: true,
+    });
+
+    return () => window.removeEventListener("scroll", handleFirstScroll);
+  }, [isReady, startAmbientSound]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -173,26 +159,6 @@ export default function PortfolioBootLoader() {
         </div>
       </div>
 
-      {isReady ? (
-        <button
-          className="portfolio-sound-control"
-          type="button"
-          onClick={toggleAmbientSound}
-          aria-pressed={soundState === "playing"}
-          aria-label={
-            soundState === "playing"
-              ? "Mute ambient sound"
-              : "Enable ambient sound"
-          }
-        >
-          <span aria-hidden="true">
-            {soundState === "playing" ? "◖)))" : "◖‧‧"}
-          </span>
-          <span>
-            {soundState === "playing" ? "Mute ambient" : "Enable sound"}
-          </span>
-        </button>
-      ) : null}
     </div>
   );
 }
