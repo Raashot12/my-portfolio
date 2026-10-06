@@ -2,7 +2,7 @@
 
 import { AdaptiveDpr, Preload } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 import { InterfaceEngineScene } from "./InterfaceEngineScene";
@@ -10,6 +10,7 @@ import type { EngineSignals, HeroEngineConfig } from "./engine-types";
 
 type Hero3DCanvasProps = HeroEngineConfig & {
   signals: EngineSignals;
+  onReady?: () => void;
 };
 
 export default function Hero3DCanvas({
@@ -17,7 +18,10 @@ export default function Hero3DCanvas({
   tier,
   reducedMotion,
   active,
+  onReady,
 }: Hero3DCanvasProps) {
+  const readyRef = useRef(false);
+
   useEffect(() => {
     signals.reducedMotion = reducedMotion;
     signals.active = active;
@@ -45,6 +49,13 @@ export default function Hero3DCanvas({
         gl.toneMapping = THREE.ACESFilmicToneMapping;
         gl.toneMappingExposure = 1.08;
         gl.setClearColor(0x000000, 0);
+
+        if (!readyRef.current) {
+          readyRef.current = true;
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => onReady?.());
+          });
+        }
       }}
       resize={{ debounce: { resize: 100, scroll: 0 } }}
       fallback={null}
