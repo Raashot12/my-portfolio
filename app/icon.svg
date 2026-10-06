@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="RI monogram">
+  <rect width="512" height="512" rx="120" fill="#3155df"/>
+  <path d="M108 372V140h102c61 0 99 31 99 83 0 33-17 59-48 72l64 77h-75l-53-67h-26v67h-63Zm63-121h34c27 0 41-10 41-30s-14-30-41-30h-34v60Z" fill="#fffdf7"/>
+  <path d="M344 372V140h64v232h-64Z" fill="#fffdf7"/>
+  <circle cx="408" cy="105" r="31" fill="#d9ff66"/>
+</svg>

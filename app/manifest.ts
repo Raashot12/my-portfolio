@@ -2,24 +2,19 @@ import { MetadataRoute } from 'next'
  
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Rasheed Iskilu - Senior Full Stack Developer Portfolio',
+    name: 'Rasheed Iskilu - Senior Frontend Engineer',
     short_name: 'Rasheed Portfolio',
-    description: 'Senior Full Stack Developer with 4+ years experience in healthcare & fintech. Expert in React, Next.js, TypeScript, .NET Core.',
+    description: 'Senior Frontend Engineer building production web and mobile products with React, Next.js, TypeScript, and React Native.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#000000',
-    theme_color: '#3275F8',
+    background_color: '#f5f1e9',
+    theme_color: '#3155df',
     orientation: 'portrait-primary',
     icons: [
       {
-        src: '/jsm-logo.png',
-        sizes: '192x192',
-        type: 'image/png',
-      },
-      {
-        src: '/jsm-logo.png',
-        sizes: '512x512',
-        type: 'image/png',
+        src: '/icon.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
       },
     ],
     categories: ['business', 'productivity', 'developer'],
