@@ -1,3 +1,5 @@
+"use client";
+
 // import Image from "next/image";
 import TechStackMarquee from "./TechStackMarquee";
 import SiteHeader from "./SiteHeader";
@@ -336,7 +338,13 @@ function ProjectVisual({ projectIndex }: { projectIndex: number }) {
   );
 }
 
-export default function PortfolioPage() {
+type PortfolioPageProps = {
+  onEngineReady?: () => void;
+};
+
+export default function PortfolioPage({
+  onEngineReady,
+}: PortfolioPageProps) {
   return (
     <>
       <a className="skip-link" href="#main-content">
@@ -347,7 +355,7 @@ export default function PortfolioPage() {
 
       <PortfolioScrollAnimations>
         <section className="hero" id="home">
-          <Hero3DBackground />
+          <Hero3DBackground onReady={onEngineReady} />
           <div className="hero-orbit orbit-one" aria-hidden="true" />
           <div className="hero-orbit orbit-two" aria-hidden="true" />
           <div className="page-shell hero-grid">

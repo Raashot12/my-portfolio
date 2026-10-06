@@ -36,12 +36,16 @@ function readConfig(): Omit<HeroEngineConfig, "active"> {
   return { tier, reducedMotion };
 }
 
-export default function Hero3DBackground() {
+type Hero3DBackgroundProps = {
+  onReady?: () => void;
+};
+
+export default function Hero3DBackground({
+  onReady,
+}: Hero3DBackgroundProps) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const loaderRef = useRef<HTMLDivElement>(null);
   const readyRef = useRef(false);
   const signals = useMemo(createEngineSignals, []);
-  const [engineReady, setEngineReady] = useState(false);
   const [config, setConfig] = useState<HeroEngineConfig>({
     tier: "desktop",
     reducedMotion: false,
@@ -51,28 +55,12 @@ export default function Hero3DBackground() {
   const handleEngineReady = useCallback(() => {
     if (readyRef.current) return;
     readyRef.current = true;
-    setEngineReady(true);
 
     const root = rootRef.current;
     const hero = root?.closest<HTMLElement>(".hero");
     if (hero) hero.dataset.engineReady = "true";
-
-    const loader = loaderRef.current;
-    if (!loader) return;
-
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    gsap.to(loader, {
-      autoAlpha: 0,
-      delay: reducedMotion ? 0 : 0.12,
-      duration: reducedMotion ? 0 : 0.68,
-      ease: "power3.out",
-      onComplete: () => {
-        loader.style.pointerEvents = "none";
-      },
-    });
-  }, []);
+    onReady?.();
+  }, [onReady]);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -80,7 +68,6 @@ export default function Hero3DBackground() {
     if (!root || !hero) return;
 
     hero.dataset.engineReady = "false";
-    const readyFallbackTimer = window.setTimeout(handleEngineReady, 4200);
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const coarseQuery = window.matchMedia("(pointer: coarse)");
@@ -413,7 +400,6 @@ export default function Hero3DBackground() {
       motionQuery.removeEventListener("change", handleMotionPreferenceChange);
       coarseQuery.removeEventListener("change", applyRuntimeConfig);
       gsap.killTweensOf(signals);
-      window.clearTimeout(readyFallbackTimer);
       if (browser) gsap.set(browser, { clearProps: "transform" });
       delete hero.dataset.engineDashboardHover;
       delete hero.dataset.engineReady;
@@ -422,27 +408,7 @@ export default function Hero3DBackground() {
   }, [handleEngineReady, signals]);
 
   return (
-    <div
-      className={`hero-engine ${engineReady ? "is-ready" : "is-loading"}`}
-      ref={rootRef}
-      aria-hidden="true"
-    >
-      <div className="hero-engine-loader" ref={loaderRef}>
-        <div className="hero-engine-loader-content">
-          <div className="hero-engine-loader-kicker">
-            <span className="hero-engine-loader-dot" />
-            <span>Interface engine</span>
-          </div>
-          <p className="hero-engine-loader-title">Waking the workspace</p>
-          <div className="hero-engine-loader-track">
-            <span />
-          </div>
-          <div className="hero-engine-loader-meta">
-            <span>WebGL / procedural scene</span>
-            <span>Preparing view</span>
-          </div>
-        </div>
-      </div>
+    <div className="hero-engine" ref={rootRef} aria-hidden="true">
       <div className="hero-engine-canvas">
         <Suspense fallback={<div className="hero-engine-suspense" />}>
           <Hero3DCanvas
