@@ -15,12 +15,16 @@ export default function PortfolioBootLoader() {
   const readyRef = useRef(false);
   const [isReady, setIsReady] = useState(false);
 
-  const startAmbientSound = useCallback(() => {
+  const startAmbientSound = useCallback((): Promise<boolean> => {
     const audio = audioRef.current;
-    if (!audio || !audio.paused) return;
+    if (!audio) return Promise.resolve(false);
+    if (!audio.paused) return Promise.resolve(true);
 
     audio.volume = 0.24;
-    void audio.play().catch(() => undefined);
+    return audio
+      .play()
+      .then(() => true)
+      .catch(() => false);
   }, []);
 
   const handleEngineReady = useCallback(() => {
@@ -33,13 +37,26 @@ export default function PortfolioBootLoader() {
   useEffect(() => {
     if (!isReady) return;
 
-    const handleFirstScroll = () => startAmbientSound();
-    window.addEventListener("scroll", handleFirstScroll, {
-      passive: true,
-      once: true,
+    const eventTypes = ["scroll", "wheel", "touchstart", "pointerdown"];
+    const cleanup = () => {
+      eventTypes.forEach((eventType) =>
+        window.removeEventListener(eventType, handleInteraction),
+      );
+    };
+    const handleInteraction = () => {
+      void startAmbientSound().then((started) => {
+        if (started) cleanup();
+      });
+    };
+
+    eventTypes.forEach((eventType) =>
+      window.addEventListener(eventType, handleInteraction, { passive: true }),
+    );
+    void startAmbientSound().then((started) => {
+      if (started) cleanup();
     });
 
-    return () => window.removeEventListener("scroll", handleFirstScroll);
+    return cleanup;
   }, [isReady, startAmbientSound]);
 
   useEffect(() => {
