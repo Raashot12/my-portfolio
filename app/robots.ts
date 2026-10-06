@@ -1,14 +1,28 @@
-import { MetadataRoute } from 'next'
- 
+import type { MetadataRoute } from "next";
+
+const fallbackSiteUrl = "https://rashdev.vercel.app";
+
+function getSiteUrl() {
+  try {
+    const url = new URL(
+      process.env.NEXT_PUBLIC_SITE_URL?.trim() || fallbackSiteUrl,
+    );
+    return url.toString().replace(/\/$/, "");
+  } catch {
+    return fallbackSiteUrl;
+  }
+}
+
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || 'https://rashdev.vercel.app'
-  
+  const siteUrl = getSiteUrl();
+
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/api/'],
+      userAgent: "*",
+      allow: "/",
+      disallow: "/api/",
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
-  }
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
+  };
 }
