@@ -70,6 +70,7 @@ const betpikrSlides: ProjectCarouselSlide[] = [
 const primaryProjects = [
   {
     number: "01",
+    slug: "plural-health",
     eyebrow: "Healthcare product suite",
     title: "Plural Health",
     statement: "Making dense clinical operations feel clear.",
@@ -93,6 +94,7 @@ const primaryProjects = [
   },
   {
     number: "02",
+    slug: "betpikr",
     eyebrow: "Fintech operations",
     title: "Betpikr",
     statement: "One product language for customers and operators.",
@@ -120,6 +122,7 @@ const primaryProjects = [
   },
   {
     number: "03",
+    slug: "myneohealth-visilite",
     eyebrow: "Mobile healthcare + inventory",
     title: "myNeoHealth & VisiLite",
     statement: "Critical workflows, designed to travel.",
@@ -539,6 +542,7 @@ export default function PortfolioPage({
               {primaryProjects.map((project, index) => (
                 <article
                   className={`project-card project-${project.tone}`}
+                  id={`project-${project.slug}`}
                   key={project.title}
                 >
                   <ProjectVisual projectIndex={index} />
