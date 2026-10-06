@@ -6,18 +6,63 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import PortfolioPage from "./PortfolioPage";
 
 const ENGINE_FAIL_OPEN_MS = 5200;
+type AmbientSoundState = "pending" | "playing" | "blocked" | "muted";
 
 export default function PortfolioBootLoader() {
   const shellRef = useRef<HTMLDivElement>(null);
   const appRef = useRef<HTMLDivElement>(null);
   const loaderRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const readyRef = useRef(false);
   const [isReady, setIsReady] = useState(false);
+  const [soundState, setSoundState] = useState<AmbientSoundState>("pending");
+
+  const startAmbientSound = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) {
+      setSoundState("blocked");
+      return;
+    }
+
+    audio.volume = 0.24;
+    const playPromise = audio.play();
+    if (!playPromise) {
+      setSoundState("playing");
+      return;
+    }
+
+    playPromise
+      .then(() => setSoundState("playing"))
+      .catch(() => setSoundState("blocked"));
+  }, []);
+
+  const toggleAmbientSound = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (!audio.paused) {
+      audio.pause();
+      setSoundState("muted");
+      return;
+    }
+
+    startAmbientSound();
+  }, [startAmbientSound]);
 
   const handleEngineReady = useCallback(() => {
     if (readyRef.current) return;
     readyRef.current = true;
     setIsReady(true);
+    startAmbientSound();
+  }, [startAmbientSound]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    return () => {
+      audio?.pause();
+      if (audio) audio.currentTime = 0;
+    };
   }, []);
 
   useEffect(() => {
@@ -87,6 +132,14 @@ export default function PortfolioBootLoader() {
       className={`portfolio-boot-shell ${isReady ? "is-ready" : "is-loading"}`}
       aria-busy={!isReady}
     >
+      <audio
+        ref={audioRef}
+        src="/news-news-ambient-upbeat.mp3"
+        preload="auto"
+        loop
+        aria-hidden="true"
+      />
+
       <div
         ref={appRef}
         className="portfolio-boot-app"
@@ -119,6 +172,27 @@ export default function PortfolioBootLoader() {
           </div>
         </div>
       </div>
+
+      {isReady ? (
+        <button
+          className="portfolio-sound-control"
+          type="button"
+          onClick={toggleAmbientSound}
+          aria-pressed={soundState === "playing"}
+          aria-label={
+            soundState === "playing"
+              ? "Mute ambient sound"
+              : "Enable ambient sound"
+          }
+        >
+          <span aria-hidden="true">
+            {soundState === "playing" ? "◖)))" : "◖‧‧"}
+          </span>
+          <span>
+            {soundState === "playing" ? "Mute ambient" : "Enable sound"}
+          </span>
+        </button>
+      ) : null}
     </div>
   );
 }
