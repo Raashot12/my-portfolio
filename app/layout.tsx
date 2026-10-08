@@ -26,30 +26,15 @@ const SITE_URL = (() => {
   }
 })();
 
-const title = "Rasheed Iskilu - Senior Frontend Engineer";
+const title = "Rasheed Iskilu | Senior Frontend Engineer in Lagos";
 const description =
-  "Senior Frontend Engineer with 5+ years building production web and mobile products across healthcare, fintech, ticketing, and supply chain with React, Next.js, TypeScript, and React Native.";
+  "Rasheed Iskilu is a senior frontend engineer in Lagos, Nigeria, building reliable healthcare, fintech, and mobile products with React, Next.js, TypeScript, and React Native.";
 
 export const metadata: Metadata = {
   metadataBase: SITE_URL,
   title,
   description,
   applicationName: "Rasheed Iskilu Portfolio",
-  keywords: [
-    "Rasheed Iskilu",
-    "Senior Frontend Engineer",
-    "Frontend Engineer Lagos",
-    "React Engineer Nigeria",
-    "Next.js Developer",
-    "TypeScript Engineer",
-    "React Native Developer",
-    "Frontend Architect",
-    "Healthcare Software Engineer",
-    "Fintech Frontend Engineer",
-    "Design Systems Engineer",
-    "Accessible UI Engineer",
-    "Remote Frontend Engineer",
-  ],
   authors: [{ name: "Rasheed Iskilu", url: SITE_URL }],
   creator: "Rasheed Iskilu",
   category: "technology",
@@ -66,7 +51,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_NG",
     url: SITE_URL,
     title,
     description,

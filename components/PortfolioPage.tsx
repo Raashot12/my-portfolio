@@ -14,9 +14,29 @@ const resumeHref = "/Rasheed_Iskilu_Frontend_Engineer_Resume.pdf";
 const pluralHealthSlides: ProjectCarouselSlide[] = [
   {
     id: "neopharmacy",
+    label: "NeoPharmacy / Login",
+    note: "Offline-ready workflows",
+    src: "/login.webp",
+    alt: "NeoPharmacy Login page(pseduo)",
+    width: 1672,
+    height: 941,
+    canvas: "pharmacy",
+  },
+  {
+    id: "neopharmacy1",
+    label: "NeoPharmacy / Outlet Selection",
+    note: "Offline-ready workflows",
+    src: "/selectoutlet.webp",
+    alt: "NeoPharmacy outlet selection",
+    width: 1672,
+    height: 941,
+    canvas: "pharmacy",
+  },
+  {
+    id: "neopharmacy1",
     label: "NeoPharmacy / Point of sale",
     note: "Offline-ready workflows",
-    src: "/neopharmacy.webp",
+    src: "/pointofsale.webp",
     alt: "NeoPharmacy point-of-sale dashboard with product search, cart, and checkout controls",
     width: 1672,
     height: 941,
@@ -345,9 +365,7 @@ type PortfolioPageProps = {
   onEngineReady?: () => void;
 };
 
-export default function PortfolioPage({
-  onEngineReady,
-}: PortfolioPageProps) {
+export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
   return (
     <>
       <a className="skip-link" href="#main-content">
@@ -366,9 +384,7 @@ export default function PortfolioPage({
               <p className="eyebrow hero-eyebrow">
                 <span /> Senior frontend engineer · Lagos / global
               </p>
-              <h1 aria-label="Interfaces people trust.">
-                <span aria-hidden="true">Interfaces people trust.</span>
-              </h1>
+              <h1>Senior frontend engineer building products people trust.</h1>
               <p className="hero-intro">
                 Five-plus years turning complex healthcare, fintech and
                 operational workflows into fast, accessible web and mobile
@@ -586,6 +602,7 @@ export default function PortfolioPage({
                     </div>
 
                     <div className="project-links">
+                      <a href={`/work/${project.slug}`}>Read the {project.title} case study <Arrow /></a>
                       {project.links.map((link) => (
                         <a
                           key={link.href}
@@ -710,7 +727,8 @@ export default function PortfolioPage({
           <div className="page-shell">
             <p className="eyebrow">Product feedback</p>
             <h2 id="testimonial-heading">
-              The best interface is the one&nbsp;<em>people trust under pressure.</em>
+              The best interface is the one&nbsp;
+              <em>people trust under pressure.</em>
             </h2>
             <div className="testimonial-grid">
               <blockquote>

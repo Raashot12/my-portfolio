@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { caseStudies } from "@/lib/case-studies";
 
 const fallbackSiteUrl = "https://rashdev.vercel.app";
-const lastModified = "2026-10-06";
+const lastModified = new Date("2026-10-07");
 
 function getSiteUrl() {
   try {
@@ -18,11 +19,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = getSiteUrl();
 
   return [
-    {
-      url: siteUrl,
+    { url: siteUrl, lastModified },
+    ...caseStudies.map(({ slug }) => ({
+      url: `${siteUrl}/work/${slug}`,
       lastModified,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+    })),
   ];
 }

@@ -3,7 +3,7 @@ const profileName = "Rasheed Iskilu";
 const profileTitle = "Senior Frontend Engineer";
 const profileDescription =
   "Senior Frontend Engineer in Lagos, Nigeria building accessible, high-performance web and mobile products with React, Next.js, TypeScript and React Native.";
-const lastModified = "2026-10-06";
+const lastModified = "2026-10-07";
 
 type ProjectEntity = {
   id: string;
