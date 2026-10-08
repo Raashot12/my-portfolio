@@ -1,8 +1,8 @@
 const fallbackSiteUrl = "https://rashdev.vercel.app";
 const profileName = "Rasheed Iskilu";
-const profileTitle = "Senior Frontend Engineer";
+const profileTitle = "Frontend Engineer";
 const profileDescription =
-  "Senior Frontend Engineer in Lagos, Nigeria building accessible, high-performance web and mobile products with React, Next.js, TypeScript and React Native.";
+  "Frontend Engineer in Lagos, Nigeria building accessible, high-performance web and mobile products with React, Next.js, TypeScript and React Native.";
 const lastModified = "2026-10-07";
 
 type ProjectEntity = {
@@ -191,12 +191,12 @@ export default function PortfolioStructuredData() {
         url: siteUrl,
         name: `${profileName} - ${profileTitle}`,
         description:
-          "Portfolio of a Lagos-based Senior Frontend Engineer building production healthcare, fintech and operational products.",
+          "Portfolio of a Lagos-based Frontend Engineer building production healthcare, fintech and operational products.",
         inLanguage: "en",
         publisher: { "@id": personId },
         about: { "@id": personId },
         keywords: [
-          "Senior Frontend Engineer Lagos",
+          "Frontend Engineer Lagos",
           "React developer Nigeria",
           "Next.js developer",
           "TypeScript engineer",
@@ -222,7 +222,7 @@ export default function PortfolioStructuredData() {
         "@type": "WebPage",
         "@id": pageId,
         url: siteUrl,
-        name: `${profileName} - Senior Frontend Engineer Portfolio`,
+        name: `${profileName} - Frontend Engineer Portfolio`,
         description: profileDescription,
         inLanguage: "en",
         isPartOf: { "@id": websiteId },

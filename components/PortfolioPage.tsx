@@ -96,7 +96,7 @@ const primaryProjects = [
     statement: "Making dense clinical operations feel clear.",
     description:
       "A connected suite for hospitals, pharmacies, insurers, laboratories and patients. I helped shape complex, role-based workflows into dependable web and mobile interfaces used across day-to-day healthcare operations.",
-    role: "Senior Frontend Engineer",
+    role: "Frontend Engineer",
     scope: "Web + mobile",
     focus: "Architecture, UI systems, workflows",
     highlights: [
@@ -178,7 +178,7 @@ const primaryProjects = [
 const experience = [
   {
     period: "May 2022 — May 2026",
-    role: "Senior Frontend Engineer",
+    role: "Frontend Engineer",
     company: "Plural Health / Plateaumed Limited",
     location: "Lagos, Nigeria",
     summary:
@@ -382,9 +382,9 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
           <div className="page-shell hero-grid">
             <div className="hero-copy">
               <p className="eyebrow hero-eyebrow">
-                <span /> Senior frontend engineer · Lagos / global
+                <span /> Frontend engineer · Lagos / global
               </p>
-              <h1>Senior frontend engineer building products people trust.</h1>
+              <h1>Frontend engineer building products people trust.</h1>
               <p className="hero-intro">
                 Five-plus years turning complex healthcare, fintech and
                 operational workflows into fast, accessible web and mobile
@@ -696,7 +696,7 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
             <div className="capabilities-layout">
               <div className="capabilities-title">
                 <h2>
-                  A senior frontend partner,
+                  A Frontend partner,
                   <br />
                   <em>not just a pair of hands.</em>
                 </h2>

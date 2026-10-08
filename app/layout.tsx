@@ -26,9 +26,9 @@ const SITE_URL = (() => {
   }
 })();
 
-const title = "Rasheed Iskilu | Senior Frontend Engineer in Lagos";
+const title = "Rasheed Iskilu | Frontend Engineer in Lagos";
 const description =
-  "Rasheed Iskilu is a senior frontend engineer in Lagos, Nigeria, building reliable healthcare, fintech, and mobile products with React, Next.js, TypeScript, and React Native.";
+  "Rasheed Iskilu is a Frontend engineer in Lagos, Nigeria, building reliable healthcare, fintech, and mobile products with React, Next.js, TypeScript, and React Native.";
 
 export const metadata: Metadata = {
   metadataBase: SITE_URL,
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Rasheed Iskilu - Senior Frontend Engineer",
+        alt: "Rasheed Iskilu - Frontend Engineer",
       },
     ],
   },
