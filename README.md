@@ -41,7 +41,7 @@ As a graduate of **Lagos State University** with a degree in Political Science, 
 
 ## 🌐 Find Me Online
 
-- **Portfolio**: [Visit My Website](https://rashdev.vercel.app/)  
+- **Portfolio**: Set `NEXT_PUBLIC_SITE_URL` to the deployed portfolio URL before building.  
 - **LinkedIn**: [Connect with Me](https://www.linkedin.com/in/rasheed-dev/)  
 - **Facebook**: [Follow Me](https://www.facebook.com/akanirasheed44)  
 

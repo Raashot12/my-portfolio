@@ -1,20 +1,8 @@
 import type { MetadataRoute } from "next";
-
-const fallbackSiteUrl = "https://rashdev.vercel.app";
-
-function getSiteUrl() {
-  try {
-    const url = new URL(
-      process.env.NEXT_PUBLIC_SITE_URL?.trim() || fallbackSiteUrl,
-    );
-    return url.toString().replace(/\/$/, "");
-  } catch {
-    return fallbackSiteUrl;
-  }
-}
+import { getSiteUrlString } from "@/lib/site-url";
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = getSiteUrl();
+  const siteUrl = getSiteUrlString();
 
   return {
     rules: {

@@ -3,6 +3,7 @@ import { Goudy_Bookletter_1911 } from "next/font/google";
 
 import "./globals.css";
 import PortfolioStructuredData from "@/components/PortfolioStructuredData";
+import { getSiteUrl } from "@/lib/site-url";
 
 const goudyBookletter = Goudy_Bookletter_1911({
   weight: "400",
@@ -12,19 +13,7 @@ const goudyBookletter = Goudy_Bookletter_1911({
   fallback: ["Georgia", "Times New Roman"],
 });
 
-const FALLBACK_SITE_URL = "https://rashdev.vercel.app";
-const SITE_URL = (() => {
-  try {
-    const url = new URL(
-      process.env.NEXT_PUBLIC_SITE_URL?.trim() || FALLBACK_SITE_URL,
-    );
-    url.hash = "";
-    url.search = "";
-    return url;
-  } catch {
-    return new URL(FALLBACK_SITE_URL);
-  }
-})();
+const SITE_URL = getSiteUrl();
 
 const title = "Rasheed Iskilu | Frontend Engineer in Lagos";
 const description =

@@ -1,4 +1,5 @@
-const fallbackSiteUrl = "https://rashdev.vercel.app";
+import { getSiteUrlString } from "@/lib/site-url";
+
 const profileName = "Rasheed Iskilu";
 const profileTitle = "Frontend Engineer";
 const profileDescription =
@@ -102,7 +103,7 @@ const projects: ProjectEntity[] = [
 ];
 
 export default function PortfolioStructuredData() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || fallbackSiteUrl;
+  const siteUrl = getSiteUrlString();
   const personId = `${siteUrl}/#person`;
   const websiteId = `${siteUrl}/#website`;
   const pageId = `${siteUrl}/#webpage`;

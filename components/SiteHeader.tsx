@@ -29,6 +29,7 @@ function HeaderArrow() {
 
 export default function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
@@ -58,7 +59,31 @@ export default function SiteHeader() {
     if (mobileMenuRef.current) {
       mobileMenuRef.current.open = false;
     }
+    setIsMenuOpen(false);
   };
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!mobileMenuRef.current?.contains(event.target as Node)) {
+        closeMobileMenu();
+      }
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMobileMenu();
+        mobileMenuRef.current?.querySelector<HTMLElement>("summary")?.focus();
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
 
   return (
     <header className="site-header" data-scrolled={isScrolled ? "true" : "false"}>
@@ -83,9 +108,16 @@ export default function SiteHeader() {
         Let&apos;s talk <HeaderArrow />
       </a>
 
-      <details className="mobile-nav" ref={mobileMenuRef}>
-        <summary>Menu</summary>
-        <nav aria-label="Mobile navigation">
+      <details
+        className="mobile-nav"
+        ref={mobileMenuRef}
+        onToggle={() => setIsMenuOpen(mobileMenuRef.current?.open ?? false)}
+      >
+        <summary aria-controls="mobile-menu-panel" aria-expanded={isMenuOpen}>
+          <span>Menu</span>
+          <span className="mobile-nav-chevron" aria-hidden="true" />
+        </summary>
+        <nav id="mobile-menu-panel" aria-label="Mobile navigation">
           {navigation.map((item) => (
             <a href={item.href} key={item.href} onClick={closeMobileMenu}>
               {item.label}

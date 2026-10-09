@@ -384,7 +384,11 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
               <p className="eyebrow hero-eyebrow">
                 <span /> Frontend engineer · Lagos / global
               </p>
-              <h1>Frontend engineer building products people trust.</h1>
+              <h1>
+                <span className="hero-title-line">Frontend engineer</span>
+                <span className="hero-title-line">building products</span>
+                <span className="hero-title-line">people trust.</span>
+              </h1>
               <p className="hero-intro">
                 Five-plus years turning complex healthcare, fintech and
                 operational workflows into fast, accessible web and mobile

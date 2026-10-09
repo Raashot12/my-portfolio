@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudy } from "@/lib/case-studies";
+import { getSiteUrlString } from "@/lib/site-url";
 
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://rashdev.vercel.app").replace(/\/+$/, "");
+const siteUrl = getSiteUrlString();
 export function generateStaticParams() { return caseStudies.map(({ slug }) => ({ slug })); }
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const study = getCaseStudy(params.slug);
