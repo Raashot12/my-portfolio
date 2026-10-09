@@ -137,7 +137,7 @@ export default function PortfolioStructuredData() {
         email: "mailto:rasheediskilu.dev@gmail.com",
         jobTitle: profileTitle,
         description: profileDescription,
-        image: `${siteUrl}/opengraph-image`,
+        image: `${siteUrl}/og_thumbnail.webp`,
         address: {
           "@type": "PostalAddress",
           addressLocality: "Lagos",

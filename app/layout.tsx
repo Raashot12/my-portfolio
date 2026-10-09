@@ -58,9 +58,9 @@ export const metadata: Metadata = {
     siteName: "Rasheed Iskilu Portfolio",
     images: [
       {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
+        url: "/og_thumbnail.webp",
+        width: 1731,
+        height: 909,
         alt: "Rasheed Iskilu - Frontend Engineer",
       },
     ],
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title,
     description,
     creator: "@rashdev_i",
-    images: ["/opengraph-image"],
+    images: ["/og_thumbnail.webp"],
   },
   alternates: {
     canonical: "/",

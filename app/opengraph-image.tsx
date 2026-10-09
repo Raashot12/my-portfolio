@@ -60,7 +60,7 @@ export default function OpenGraphImage() {
               Frontend Engineer
             </span>
           </div>
-          <div style={{ fontSize: 78, lineHeight: 0.98, fontWeight: 800, letterSpacing: "-0.055em" }}>
+          <div style={{ display: "flex", flexDirection: "column", fontSize: 78, lineHeight: 0.98, fontWeight: 800, letterSpacing: "-0.055em" }}>
             Product interfaces
             <br />
             people can <span style={{ color: "#d9ff66" }}>trust.</span>

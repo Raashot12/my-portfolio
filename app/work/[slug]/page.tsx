@@ -13,8 +13,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     title: study.title + " | Rasheed Iskilu",
     description: study.description,
     alternates: { canonical },
-    openGraph: { type: "article", url: canonical, title: study.title + " | Rasheed Iskilu", description: study.description, siteName: "Rasheed Iskilu Portfolio", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: study.title }] },
-    twitter: { card: "summary_large_image", title: study.title + " | Rasheed Iskilu", description: study.description, images: ["/opengraph-image"] },
+    openGraph: { type: "article", url: canonical, title: study.title + " | Rasheed Iskilu", description: study.description, siteName: "Rasheed Iskilu Portfolio", images: [{ url: "/og_thumbnail.webp", width: 1731, height: 909, alt: study.title }] },
+    twitter: { card: "summary_large_image", title: study.title + " | Rasheed Iskilu", description: study.description, images: ["/og_thumbnail.webp"] },
   };
 }
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
