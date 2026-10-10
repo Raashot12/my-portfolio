@@ -14,6 +14,8 @@ type ProjectEntity = {
   url?: string;
   category: string;
   subCategory: string;
+  industries: string[];
+  capabilities: string[];
   operatingSystem: string;
   keywords: string[];
   highlights: string[];
@@ -29,7 +31,20 @@ const projects: ProjectEntity[] = [
     image: "/neopharmacy.webp",
     url: "https://plural.health/",
     category: "HealthApplication",
-    subCategory: "Electronic health record and pharmacy operations software",
+    subCategory:
+      "Electronic health records, pharmacy management and clinical operations software",
+    industries: [
+      "Digital health",
+      "Healthcare technology",
+      "Pharmacy operations",
+      "Hospital operations",
+    ],
+    capabilities: [
+      "Frontend engineering",
+      "Design systems",
+      "Offline-first architecture",
+      "Accessible data-heavy workflows",
+    ],
     operatingSystem: "Web, iOS and Android",
     keywords: [
       "healthcare software",
@@ -57,7 +72,20 @@ const projects: ProjectEntity[] = [
     image: "/betPikr.webp",
     url: "https://dev-frontend.betpikr.app/en",
     category: "BusinessApplication",
-    subCategory: "Realtime customer experience and operations platform",
+    subCategory:
+      "Sports betting customer experience and realtime operations platform",
+    industries: [
+      "Sports technology",
+      "Gaming technology",
+      "Operations software",
+      "Realtime web applications",
+    ],
+    capabilities: [
+      "Frontend engineering",
+      "Responsive interface design",
+      "Realtime data presentation",
+      "Role-based operations dashboards",
+    ],
     operatingSystem: "Web",
     keywords: [
       "fintech frontend engineer",
@@ -80,7 +108,20 @@ const projects: ProjectEntity[] = [
       "Mobile healthcare and inventory products for patient access, clinical teams and supply-chain operations.",
     image: "/website.webp",
     category: "HealthApplication",
-    subCategory: "Mobile healthcare and inventory workflow software",
+    subCategory:
+      "Mobile healthcare, patient engagement and inventory management software",
+    industries: [
+      "Digital health",
+      "Mobile healthcare",
+      "Supply chain technology",
+      "Clinical operations",
+    ],
+    capabilities: [
+      "React Native engineering",
+      "Mobile product development",
+      "Barcode and QR workflows",
+      "Secure API integration",
+    ],
     operatingSystem: "iOS and Android",
     keywords: [
       "React Native engineer",
@@ -118,9 +159,14 @@ export default function PortfolioStructuredData() {
     image: `${siteUrl}${project.image}`,
     applicationCategory: project.category,
     applicationSubCategory: project.subCategory,
+    genre: project.industries,
+    about: project.industries.map((industry) => ({
+      "@type": "Thing",
+      name: industry,
+    })),
     operatingSystem: project.operatingSystem,
-    keywords: project.keywords,
-    featureList: project.highlights,
+    keywords: [...project.keywords, ...project.industries, ...project.capabilities],
+    featureList: [...project.highlights, ...project.capabilities],
     creator: { "@id": personId },
     author: { "@id": personId },
     isPartOf: { "@id": pageId },
@@ -182,6 +228,15 @@ export default function PortfolioStructuredData() {
           "Offline-first web applications",
           "Healthcare software",
           "Fintech interfaces",
+          "Digital health product development",
+          "Pharmacy management software",
+          "Hospital operations software",
+          "Sports technology interfaces",
+          "Realtime operations dashboards",
+          "Mobile healthcare applications",
+          "Inventory management interfaces",
+          "Design systems engineering",
+          "Web accessibility and performance",
           "Automated frontend testing",
         ],
         mainEntityOfPage: { "@id": profileId },
@@ -204,6 +259,12 @@ export default function PortfolioStructuredData() {
           "React Native developer",
           "frontend architecture consultant",
           "healthcare software engineer",
+          "digital health frontend engineer",
+          "sports technology frontend engineer",
+          "mobile healthcare app developer",
+          "operations dashboard developer",
+          "design systems engineer",
+          "accessible frontend development",
           "remote frontend engineer",
         ],
       },
@@ -237,6 +298,11 @@ export default function PortfolioStructuredData() {
           "healthcare product engineer",
           "fintech frontend engineer",
           "Lagos software engineer",
+          "digital health developer",
+          "sports technology developer",
+          "mobile product engineer",
+          "operations software frontend engineer",
+          "accessible React developer",
         ],
         breadcrumb: { "@id": `${siteUrl}/#breadcrumb` },
       },
@@ -278,6 +344,10 @@ export default function PortfolioStructuredData() {
           "TypeScript frontend architecture",
           "React Native mobile development",
           "Design systems and accessible UI",
+          "Digital health product development",
+          "Healthcare operations software interfaces",
+          "Realtime sports technology interfaces",
+          "Inventory and supply-chain workflow applications",
         ],
         description:
           "Frontend engineering for complex healthcare, fintech and operational products across web and mobile.",

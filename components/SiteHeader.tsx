@@ -30,7 +30,7 @@ function HeaderArrow() {
 export default function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const mobileMenuRef = useRef<HTMLDetailsElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let animationFrame = 0;
@@ -56,9 +56,6 @@ export default function SiteHeader() {
   }, []);
 
   const closeMobileMenu = () => {
-    if (mobileMenuRef.current) {
-      mobileMenuRef.current.open = false;
-    }
     setIsMenuOpen(false);
   };
 
@@ -73,7 +70,7 @@ export default function SiteHeader() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         closeMobileMenu();
-        mobileMenuRef.current?.querySelector<HTMLElement>("summary")?.focus();
+        mobileMenuRef.current?.querySelector<HTMLElement>(".mobile-nav-summary")?.focus();
       }
     };
 
@@ -108,15 +105,21 @@ export default function SiteHeader() {
         Let&apos;s talk <HeaderArrow />
       </a>
 
-      <details
+      <div
         className="mobile-nav"
         ref={mobileMenuRef}
-        onToggle={() => setIsMenuOpen(mobileMenuRef.current?.open ?? false)}
+        data-open={isMenuOpen ? "true" : "false"}
       >
-        <summary aria-controls="mobile-menu-panel" aria-expanded={isMenuOpen}>
+        <button
+          type="button"
+          className="mobile-nav-summary"
+          aria-controls="mobile-menu-panel"
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
           <span>Menu</span>
           <span className="mobile-nav-chevron" aria-hidden="true" />
-        </summary>
+        </button>
         <nav id="mobile-menu-panel" aria-label="Mobile navigation">
           {navigation.map((item) => (
             <a href={item.href} key={item.href} onClick={closeMobileMenu}>
@@ -124,7 +127,7 @@ export default function SiteHeader() {
             </a>
           ))}
         </nav>
-      </details>
+      </div>
     </header>
   );
 }
