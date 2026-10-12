@@ -3,6 +3,7 @@
 // import Image from "next/image";
 import TechStackMarquee from "./TechStackMarquee";
 import SiteHeader from "./SiteHeader";
+import SpotlightCursor from "./SpotlightCursor";
 import PortfolioScrollAnimations from "./PortfolioScrollAnimations";
 import Hero3DBackground from "./hero-engine/Hero3DBackground";
 import ProjectMediaCarousel, {
@@ -372,6 +373,7 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
         Skip to content
       </a>
 
+      <SpotlightCursor />
       <SiteHeader />
 
       <PortfolioScrollAnimations>

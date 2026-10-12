@@ -357,6 +357,108 @@ a:hover .arrow-icon {
   transform: translate(3px, -3px);
 }
 
+/* Desktop-only spotlight cursor inspired by the reference's cursor-led reveal. */
+.spotlight-cursor {
+  --cursor-x: -120px;
+  --cursor-y: -120px;
+  position: fixed;
+  z-index: 1200;
+  top: 0;
+  left: 0;
+  width: 132px;
+  height: 132px;
+  display: grid;
+  place-items: center;
+  transform: translate3d(var(--cursor-x), var(--cursor-y), 0) translate(-50%, -50%) scale(0.72);
+  border: 1px solid rgba(217, 255, 102, 0.62);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217, 255, 102, 0.12), rgba(49, 85, 223, 0.05) 48%, transparent 72%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.16) inset,
+    0 0 34px rgba(217, 255, 102, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 180ms ease,
+    transform 320ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+  mix-blend-mode: screen;
+}
+
+.spotlight-cursor::before,
+.spotlight-cursor::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.spotlight-cursor::before {
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+.spotlight-cursor::after {
+  inset: -9px;
+  border: 1px solid rgba(217, 255, 102, 0.2);
+  transform: scale(0.86);
+  transition: transform 320ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.spotlight-cursor.is-visible {
+  opacity: 1;
+  transform: translate3d(var(--cursor-x), var(--cursor-y), 0) translate(-50%, -50%) scale(1);
+}
+
+.spotlight-cursor.is-interactive {
+  border-color: var(--portfolio-lime);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.22) inset,
+    0 0 44px rgba(217, 255, 102, 0.36);
+  transform: translate3d(var(--cursor-x), var(--cursor-y), 0) translate(-50%, -50%) scale(1.14);
+}
+
+.spotlight-cursor.is-interactive::after {
+  transform: scale(1.04);
+}
+
+.spotlight-cursor-core {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--portfolio-lime);
+  box-shadow: 0 0 0 5px rgba(217, 255, 102, 0.14);
+}
+
+.spotlight-cursor-label {
+  position: absolute;
+  bottom: 23px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.86);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+}
+
+@media (pointer: fine) and (hover: hover) {
+  body.spotlight-cursor-enabled,
+  body.spotlight-cursor-enabled a,
+  body.spotlight-cursor-enabled button {
+    cursor: none;
+  }
+
+  body.spotlight-cursor-enabled input,
+  body.spotlight-cursor-enabled textarea,
+  body.spotlight-cursor-enabled select {
+    cursor: text;
+  }
+}
+
 .site-header {
   position: fixed;
   z-index: 40;
