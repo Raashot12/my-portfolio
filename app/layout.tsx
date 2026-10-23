@@ -15,18 +15,32 @@ const goudyBookletter = Goudy_Bookletter_1911({
 
 const SITE_URL = getSiteUrl();
 
-const title = "Rasheed Iskilu | Frontend Engineer in Lagos";
+const brandName = "Rashdev Solution";
+const title = `${brandName} | Rasheed Iskilu — Full-Stack Developer, Frontend Focus`;
 const description =
-  "Rasheed Iskilu is a Frontend engineer in Lagos, Nigeria, building reliable healthcare, fintech, and mobile products with React, Next.js, TypeScript, and React Native.";
+  "Rashdev Solution is the portfolio of Rasheed Iskilu, a Lagos-based full-stack developer with a frontend focus, building reliable healthcare, fintech, and mobile products with React, Next.js, TypeScript, and React Native.";
 
 export const metadata: Metadata = {
   metadataBase: SITE_URL,
   title,
   description,
-  applicationName: "Rasheed Iskilu Portfolio",
+  applicationName: brandName,
   authors: [{ name: "Rasheed Iskilu", url: SITE_URL }],
   creator: "Rasheed Iskilu",
+  publisher: brandName,
   category: "technology",
+  keywords: [
+    "Rashdev Solution",
+    "Rashdev",
+    "Rasheed Iskilu",
+    "Full-Stack Developer Lagos",
+    "Frontend-Focused Full-Stack Developer",
+    "Frontend Engineer Lagos",
+    "React developer Nigeria",
+    "Next.js developer",
+    "TypeScript engineer",
+    "React Native developer",
+  ],
   robots: {
     index: true,
     follow: true,
@@ -44,13 +58,13 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title,
     description,
-    siteName: "Rasheed Iskilu Portfolio",
+    siteName: brandName,
     images: [
       {
         url: "/og_thumbnail.webp",
         width: 1731,
         height: 909,
-        alt: "Rasheed Iskilu - Frontend Engineer",
+        alt: "Rasheed Iskilu - Full-Stack Developer, Frontend Focus",
       },
     ],
   },

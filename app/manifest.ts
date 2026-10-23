@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
  
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Rasheed Iskilu - Frontend Engineer',
-    short_name: 'Rasheed Portfolio',
-    description: 'Frontend Engineer building production web and mobile products with React, Next.js, TypeScript, and React Native.',
+    name: 'Rashdev Solution | Rasheed Iskilu',
+    short_name: 'Rashdev Solution',
+    description: 'Rashdev Solution is the portfolio of Rasheed Iskilu, a full-stack developer with a frontend focus, building production web and mobile products.',
     start_url: '/',
     display: 'standalone',
     background_color: '#f5f1e9',

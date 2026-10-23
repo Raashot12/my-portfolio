@@ -1,21 +1,28 @@
 import type { CSSProperties } from "react";
 import type { IconType } from "react-icons";
+import { FaDatabase, FaNetworkWired } from "react-icons/fa";
 import {
-  SiCss3,
   SiCypress,
+  SiDocker,
   SiExpo,
   SiGit,
   SiGraphql,
-  SiHtml5,
   SiJavascript,
   SiJest,
+  SiNestjs,
   SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
   SiReact,
   SiReactquery,
   SiRedux,
+  SiSwagger,
   SiTailwindcss,
   SiTestinglibrary,
   SiTypescript,
+  SiVite,
+  SiVitest,
+  SiZod,
 } from "react-icons/si";
 
 type Technology = {
@@ -31,13 +38,21 @@ const technologies: Technology[] = [
   { name: "JavaScript", icon: SiJavascript, color: "#C99A00" },
   { name: "React Native", icon: SiReact, color: "#087EA4" },
   { name: "Expo", icon: SiExpo, color: "#000020" },
-  { name: "Redux Toolkit", icon: SiRedux, color: "#764ABC" },
+  { name: "Vite", icon: SiVite, color: "#646CFF" },
+  { name: "Redux Toolkit + RTK Query", icon: SiRedux, color: "#764ABC" },
   { name: "TanStack Query", icon: SiReactquery, color: "#EF4444" },
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "#0891B2" },
   { name: "GraphQL", icon: SiGraphql, color: "#D71C8B" },
-  { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
-  { name: "CSS3", icon: SiCss3, color: "#1572B6" },
+  { name: "Node.js", icon: SiNodedotjs, color: "#539E43" },
+  { name: "NestJS", icon: SiNestjs, color: "#E0234E" },
+  { name: "TypeORM", icon: FaDatabase, color: "#E06B3C" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  { name: "Docker", icon: SiDocker, color: "#2496ED" },
+  { name: "REST APIs", icon: FaNetworkWired, color: "#3155DF" },
+  { name: "OpenAPI / Swagger", icon: SiSwagger, color: "#85EA2D" },
+  { name: "Zod", icon: SiZod, color: "#3E67B1" },
   { name: "Jest", icon: SiJest, color: "#99425B" },
+  { name: "Vitest", icon: SiVitest, color: "#6E9F18" },
   { name: "Testing Library", icon: SiTestinglibrary, color: "#E33332" },
   { name: "Cypress", icon: SiCypress, color: "#147D64" },
   { name: "Git", icon: SiGit, color: "#F05032" },
@@ -61,7 +76,7 @@ export default function TechStackMarquee() {
     <section className="tech-marquee" aria-labelledby="technology-stack-heading">
       <div className="page-shell tech-marquee-heading">
         <h2 id="technology-stack-heading">Technologies I ship with</h2>
-        <p>Production-tested across web and mobile.</p>
+        <p>Frontend depth, API integration, and database-backed delivery.</p>
       </div>
       <div className="tech-marquee-window">
         <div className="tech-marquee-track">

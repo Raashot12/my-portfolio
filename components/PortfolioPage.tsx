@@ -211,18 +211,28 @@ const experience = [
   },
 ];
 
-const shippedWork = [
+type ShippedWork = {
+  name: string;
+  type: string;
+  detail: string;
+  href: string;
+  caseStudy?: boolean;
+};
+
+const shippedWork: ShippedWork[] = [
+  {
+    name: "LIV DOT",
+    type: "Live events · frontend demo",
+    detail:
+      "Host operations, ticket discovery, seat selection, and simulated checkout backed by a local API mock.",
+    href: "/work/livdot",
+    caseStudy: true,
+  },
   {
     name: "Obafemi Hamzat",
     type: "Public platform",
     detail: "Responsive Next.js website and search optimisation.",
     href: "https://obafemihamzat.vercel.app/",
-  },
-  {
-    name: "MCPLambda",
-    type: "AI developer platform",
-    detail: "Dashboards, deployment workflows, registry and analytics.",
-    href: "https://mcplambda.io/",
   },
   {
     name: "Jetron Ticket",
@@ -231,10 +241,24 @@ const shippedWork = [
     href: "https://www.jetronticket.com/",
   },
   {
+    name: "MCPLambda",
+    type: "AI developer platform",
+    detail: "Dashboards, deployment workflows, registry and analytics.",
+    href: "https://mcplambda.io/",
+  },
+  {
     name: "Homiverse",
     type: "PropTech",
     detail: "Verified property discovery and rental workflows.",
     href: "https://homiverse.ng/",
+  },
+  {
+    name: "User Management Platform",
+    type: "Full-stack product · user administration",
+    detail:
+      "A React and Vite client with a NestJS REST API and PostgreSQL records created transactionally.",
+    href: "/work/user-management-platform",
+    caseStudy: true,
   },
 ];
 
@@ -384,17 +408,18 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
           <div className="page-shell hero-grid">
             <div className="hero-copy">
               <p className="eyebrow hero-eyebrow">
-                <span /> Frontend engineer · Lagos / global
+                <span /> Full-stack developer | frontend-focused | Lagos /
+                global
               </p>
               <h1>
-                <span className="hero-title-line">Frontend engineer</span>
-                <span className="hero-title-line">building products</span>
-                <span className="hero-title-line">people trust.</span>
+                <span className="hero-title-line">Full-stack developer</span>
+                <span className="hero-title-line">with frontend depth</span>
+                <span className="hero-title-line">across the stack.</span>
               </h1>
               <p className="hero-intro">
-                Five-plus years turning complex healthcare, fintech and
-                operational workflows into fast, accessible web and mobile
-                products.
+                Five-plus years building production software across healthcare,
+                fintech and operations. I work across the stack, with my deepest
+                expertise in frontend architecture and web and mobile products.
               </p>
               <div className="hero-actions">
                 <a className="button button-light" href="#work">
@@ -406,7 +431,8 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
               </div>
               <div className="availability">
                 <span className="availability-dot" aria-hidden="true" />
-                Available for frontend roles and product collaborations.
+                Available for full-stack roles and product collaborations, with
+                a frontend focus.
               </div>
             </div>
 
@@ -497,15 +523,15 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
               </h2>
               <div className="about-copy">
                 <p className="lead-copy">
-                  I work where product, design and engineering meet—turning
-                  dense requirements into interfaces that feel obvious to use
-                  and sane to maintain.
+                  I build full-stack products from data-rich workflows to
+                  polished interfaces, with a frontend-first approach and a
+                  focus on clear, reliable user experiences.
                 </p>
                 <p>
-                  My strongest work lives in high-stakes products: clinical
-                  systems, pharmacy operations, financial journeys and
-                  supply-chain tools. I care about the details users notice and
-                  the architecture teams inherit.
+                  Across healthcare, fintech and operations, I connect React and
+                  Next.js frontends to APIs and production data, then build
+                  reliable workflows around them. Frontend architecture remains
+                  my deepest strength.
                 </p>
                 <a className="text-link" href="#experience">
                   See the experience behind the work <Arrow />
@@ -608,7 +634,9 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
                     </div>
 
                     <div className="project-links">
-                      <a href={`/work/${project.slug}`}>Read the {project.title} case study <Arrow /></a>
+                      <a href={`/work/${project.slug}`}>
+                        Read the {project.title} case study <Arrow />
+                      </a>
                       {project.links.map((link) => (
                         <a
                           key={link.href}
@@ -628,20 +656,30 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
             <div className="more-work">
               <div className="more-work-heading">
                 <p className="eyebrow">More shipped work</p>
-                <h3>Breadth, with the same attention to detail.</h3>
+                <h3>
+                  Products across APIs, live events, and public platforms.
+                </h3>
               </div>
               <div className="more-work-list">
                 {shippedWork.map((item, index) => (
                   <a
                     href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
+                    target={item.caseStudy ? undefined : "_blank"}
+                    rel={item.caseStudy ? undefined : "noreferrer"}
+                    aria-label={
+                      item.caseStudy
+                        ? `Read the ${item.name} case study`
+                        : `Visit ${item.name}`
+                    }
                     key={item.name}
                   >
                     <span className="more-number">0{index + 1}</span>
                     <span>
                       <strong>{item.name}</strong>
-                      <small>{item.type}</small>
+                      <small>
+                        {item.type}
+                        {item.caseStudy ? " · Read case study" : ""}
+                      </small>
                     </span>
                     <p>{item.detail}</p>
                     <span className="round-arrow">
@@ -668,9 +706,10 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
                   <em>shipping forward.</em>
                 </h2>
                 <p>
-                  I have grown through the full product cycle: learning the
-                  craft, owning critical flows, shaping shared systems and
-                  helping other engineers raise the bar.
+                  My background spans product delivery from frontend
+                  architecture and mobile apps to API integrations, offline
+                  workflows and production systems. Frontend engineering remains
+                  my deepest strength.
                 </p>
                 <a className="button button-dark" href={resumeHref} download>
                   Download full résumé <span aria-hidden="true">↓</span>
@@ -702,9 +741,9 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
             <div className="capabilities-layout">
               <div className="capabilities-title">
                 <h2>
-                  A Frontend partner,
+                  Full-stack engineering,
                   <br />
-                  <em>not just a pair of hands.</em>
+                  <em>with a frontend focus.</em>
                 </h2>
                 <p>
                   I bring technical depth, product thinking and calm execution
@@ -816,7 +855,7 @@ export default function PortfolioPage({ onEngineReady }: PortfolioPageProps) {
         <a className="wordmark" href="#home">
           RI<span>.</span>
         </a>
-        <p>© 2026 Rasheed Iskilu</p>
+        <p>Rashdev Solution · © 2026 Rasheed Iskilu</p>
         <a href="#home">
           Back to top <span aria-hidden="true">↑</span>
         </a>

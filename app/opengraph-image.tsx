@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Rasheed Iskilu - Frontend Engineer";
+export const alt = "Rasheed Iskilu - Full-Stack Developer, Frontend Focus";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -57,7 +57,7 @@ export default function OpenGraphImage() {
           >
             RI<span style={{ color: "#d9ff66" }}>.</span>
             <span style={{ marginLeft: 28, opacity: 0.72, fontSize: 18 }}>
-              Frontend Engineer
+              Full-Stack Developer | Frontend Focus
             </span>
           </div>
           <div style={{ display: "flex", flexDirection: "column", fontSize: 78, lineHeight: 0.98, fontWeight: 800, letterSpacing: "-0.055em" }}>

@@ -1,9 +1,10 @@
 import { getSiteUrlString } from "@/lib/site-url";
 
 const profileName = "Rasheed Iskilu";
-const profileTitle = "Frontend Engineer";
+const profileTitle = "Full-Stack Developer (Frontend Focus)";
+const brandName = "Rashdev Solution";
 const profileDescription =
-  "Frontend Engineer in Lagos, Nigeria building accessible, high-performance web and mobile products with React, Next.js, TypeScript and React Native.";
+  "Rashdev Solution is the portfolio of Rasheed Iskilu, a full-stack developer in Lagos, Nigeria with a frontend focus, building accessible, high-performance web and mobile products with React, Next.js, TypeScript, React Native and API integrations.";
 const lastModified = "2026-10-07";
 
 type ProjectEntity = {
@@ -146,6 +147,7 @@ const projects: ProjectEntity[] = [
 export default function PortfolioStructuredData() {
   const siteUrl = getSiteUrlString();
   const personId = `${siteUrl}/#person`;
+  const organizationId = `${siteUrl}/#organization`;
   const websiteId = `${siteUrl}/#website`;
   const pageId = `${siteUrl}/#webpage`;
   const profileId = `${siteUrl}/#profile`;
@@ -203,6 +205,7 @@ export default function PortfolioStructuredData() {
           "https://github.com/Raashot12",
           "https://x.com/rashdev_i",
         ],
+        worksFor: { "@id": organizationId },
         alumniOf: {
           "@type": "CollegeOrUniversity",
           name: "Lagos State University",
@@ -215,13 +218,15 @@ export default function PortfolioStructuredData() {
             name: "Lagos",
           },
           skills:
-            "React, Next.js, TypeScript, React Native, frontend architecture, design systems, accessibility, offline-first applications and automated testing",
+            "Full-stack product development, React, Next.js, TypeScript, React Native, frontend architecture, API integration, design systems, accessibility, offline-first applications and automated testing",
         },
         knowsAbout: [
+          "Full-stack product development",
           "React frontend development",
           "Next.js application development",
           "TypeScript",
           "React Native mobile development",
+          "REST API integration",
           "Frontend architecture",
           "Design systems",
           "Accessible user interfaces",
@@ -242,16 +247,33 @@ export default function PortfolioStructuredData() {
         mainEntityOfPage: { "@id": profileId },
       },
       {
+        "@type": "Organization",
+        "@id": organizationId,
+        name: brandName,
+        alternateName: ["Rashdev", "Rashdev Solution Portfolio"],
+        url: siteUrl,
+        logo: `${siteUrl}/og_thumbnail.webp`,
+        founder: { "@id": personId },
+        sameAs: [
+          "https://www.linkedin.com/in/rasheed-dev/",
+          "https://github.com/Raashot12",
+          "https://x.com/rashdev_i",
+        ],
+      },
+      {
         "@type": "WebSite",
         "@id": websiteId,
         url: siteUrl,
-        name: `${profileName} - ${profileTitle}`,
+        name: brandName,
+        alternateName: `${profileName} Portfolio`,
         description:
-          "Portfolio of a Lagos-based Frontend Engineer building production healthcare, fintech and operational products.",
+          "Portfolio of a Lagos-based full-stack developer with a frontend focus, building production healthcare, fintech and operational products.",
         inLanguage: "en",
-        publisher: { "@id": personId },
+        publisher: { "@id": organizationId },
         about: { "@id": personId },
         keywords: [
+          "Full-stack developer Lagos",
+          "Frontend-focused full-stack developer",
           "Frontend Engineer Lagos",
           "React developer Nigeria",
           "Next.js developer",
@@ -272,7 +294,7 @@ export default function PortfolioStructuredData() {
         "@type": "ProfilePage",
         "@id": profileId,
         url: siteUrl,
-        name: `${profileName} | ${profileTitle}`,
+        name: `${brandName} | ${profileName}`,
         description: profileDescription,
         inLanguage: "en",
         isPartOf: { "@id": websiteId },
@@ -284,7 +306,7 @@ export default function PortfolioStructuredData() {
         "@type": "WebPage",
         "@id": pageId,
         url: siteUrl,
-        name: `${profileName} - Frontend Engineer Portfolio`,
+        name: `${brandName} - Full-Stack Developer Portfolio`,
         description: profileDescription,
         inLanguage: "en",
         isPartOf: { "@id": websiteId },
@@ -292,6 +314,8 @@ export default function PortfolioStructuredData() {
         mainEntity: { "@id": personId },
         dateModified: lastModified,
         keywords: [
+          "full-stack developer portfolio",
+          "frontend-focused full-stack developer",
           "frontend engineer portfolio",
           "React portfolio",
           "Next.js portfolio",

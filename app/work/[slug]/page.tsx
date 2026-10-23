@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudy } from "@/lib/case-studies";
 import { getSiteUrlString } from "@/lib/site-url";
+import CaseStudyHero from "@/components/CaseStudyHero";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 const siteUrl = getSiteUrlString();
 export function generateStaticParams() {
@@ -25,21 +27,14 @@ export function generateMetadata({
       url: canonical,
       title: study.title + " | Rasheed Iskilu",
       description: study.description,
-      siteName: "Rasheed Iskilu Portfolio",
-      images: [
-        {
-          url: "/og_thumbnail.webp",
-          width: 1731,
-          height: 909,
-          alt: study.title,
-        },
-      ],
+      siteName: "Rashdev Solution",
+      images: [{ url: study.hero.image, alt: study.hero.imageAlt }],
     },
     twitter: {
       card: "summary_large_image",
       title: study.title + " | Rasheed Iskilu",
       description: study.description,
-      images: ["/og_thumbnail.webp"],
+      images: [study.hero.image],
     },
   };
 }
@@ -105,27 +100,31 @@ export default function CaseStudyPage({
         <span aria-hidden="true">/</span>
         <Link href="/#work">Selected work</Link>
       </nav>
-      <article className="case-study-content">
-        <p className="case-study-eyebrow">{study.focus}</p>
-        <h1>{study.title}</h1>
-        <p className="case-study-lede">{study.description}</p>
-        <dl className="case-study-meta">
-          <div>
-            <dt>Role</dt>
-            <dd>{study.role}</dd>
-          </div>
-          <div>
-            <dt>Platform</dt>
-            <dd>{study.platform}</dd>
-          </div>
-        </dl>
-        <section aria-labelledby="overview-heading">
+      <CaseStudyHero study={study} />
+      <article className="case-study-content" id="case-study-details">
+        <section className="case-study-section" aria-labelledby="overview-heading">
           <h2 id="overview-heading">The work</h2>
           {study.overview.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </section>
-        <section aria-labelledby="contribution-heading">
+        {study.challenge?.length ? (
+          <section className="case-study-section" aria-labelledby="challenge-heading">
+            <h2 id="challenge-heading">The challenge</h2>
+            {study.challenge.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </section>
+        ) : null}
+        {study.approach?.length ? (
+          <section className="case-study-section" aria-labelledby="approach-heading">
+            <h2 id="approach-heading">Approach and architecture</h2>
+            {study.approach.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </section>
+        ) : null}
+        <section className="case-study-section" aria-labelledby="contribution-heading">
           <h2 id="contribution-heading">My contributions</h2>
           <ul>
             {study.contributions.map((item) => (
@@ -133,11 +132,11 @@ export default function CaseStudyPage({
             ))}
           </ul>
         </section>
-        <section aria-labelledby="outcome-heading">
+        <section className="case-study-section case-study-outcome" aria-labelledby="outcome-heading">
           <h2 id="outcome-heading">Outcome</h2>
           <p>{study.outcome}</p>
         </section>
-        <section aria-labelledby="technology-heading">
+        <section className="case-study-section" aria-labelledby="technology-heading">
           <h2 id="technology-heading">Technologies</h2>
           <ul className="case-study-tech">
             {study.technologies.map((technology) => (
@@ -145,7 +144,7 @@ export default function CaseStudyPage({
             ))}
           </ul>
         </section>
-        <div className="case-study-links">
+        <nav className="case-study-links" aria-label="Project resources">
           {study.links.map((link) => (
             <a
               key={link.href}
@@ -154,12 +153,13 @@ export default function CaseStudyPage({
               rel="noreferrer"
             >
               {link.label}
-              <span aria-hidden="true"> ↗</span>
+              <ArrowUpRight aria-hidden="true" size={16} />
             </a>
           ))}
-        </div>
+        </nav>
         <Link className="case-study-back" href="/#work">
-          ← Back to selected work
+          <ArrowLeft aria-hidden="true" size={16} />
+          Back to selected work
         </Link>
       </article>
       <footer className="case-study-footer">
