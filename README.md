@@ -1,52 +1,78 @@
-# Welcome to My Developer Portfolio! 👨‍💻
+# Rasheed Iskilu — Developer Portfolio
 
-Hi there! I'm **Iskilu Rasheed Akanni**, a passionate **Frontend Developer** specializing in **React.js**, **Next.js**, **Typescript**,  **Node.js**, **C sharp** **Flutter** and **React Native**. Over the past few years, I’ve honed my skills in building dynamic, responsive, and user-centric web applications. My focus is on creating seamless digital experiences that align with both user needs and business objectives.
+The portfolio of **Rasheed Iskilu**, a full-stack developer with a frontend focus. I build clear, responsive product experiences and work across the systems behind them, from React interfaces to APIs and persistent data.
 
----
+My background includes healthcare software, mobile workflows, event platforms, and operational tools. The case studies show the product context, my role, technical decisions, and the parts I shipped.
 
-## 🚀 About Me
+**Portfolio:** [rashdevsolution.vercel.app](https://rashdevsolution.vercel.app/) · **LinkedIn:** [rasheed-dev](https://www.linkedin.com/in/rasheed-dev/) · **GitHub:** [Raashot12](https://github.com/Raashot12)
 
-- **Frontend Specialist**: Proficient in **React.js**, **Next.js**, **Typescript**,  **Node.js**, **C sharp** **Flutter** and **React Native**, with a knack for writing clean, maintainable, and reusable code.  
-- **CSS Enthusiast**: Adept at crafting visually appealing designs using modern CSS techniques, including **TailwindCSS**, **Styled Components**, and CSS Modules.  
-- **Problem-Solver**: I love tackling complex UI challenges, optimizing web performance, and ensuring cross-browser compatibility.  
-- **Team Player**: I collaborate effectively with designers, backend developers, and product managers to bring ideas to life.  
-- **Life-Long Learner**: Constantly exploring the latest trends in frontend technologies to stay ahead of the curve.  
+## Selected case studies
 
----
+- **[LIV DOT — event operations and ticketing](https://livdot-lemon.vercel.app/)** — Frontend-led full-stack work across host operations, event discovery, ticket selection, and checkout. Built with Next.js, TypeScript, NestJS, and PostgreSQL. [Source](https://github.com/Raashot12/Livdot)
+- **[User Management Platform](https://user-management-platform-jade.vercel.app/)** — A React client connected to a NestJS API, with transaction-safe PostgreSQL persistence and documented REST endpoints. [API docs](https://user-management-platform-t3dj.onrender.com/api/docs#/users/UsersController_findAll) · [Source](https://github.com/Raashot12/user-management-platform)
+- **[Plural Health](https://plural.health/)** — Frontend engineering for healthcare, EHR, and pharmacy workflows across web and mobile products.
+- **[Betpikr](https://dev-frontend.betpikr.app/en)** — Responsive customer and operations interfaces for sports and gaming products.
+- **Mobile healthcare and inventory** — React Native workflows for patient access, clinical operations, and inventory management.
 
-## 🛠️ Skills & Tools
+Visit the portfolio’s [work section](https://rashdevsolution.vercel.app/#projects) for the full case studies and project details.
 
-### Languages and Frameworks:
-- **JavaScript (ES6+)**, **TypeScript**
-- **React.js**, **React Native**, **Next.js**, **Redux Toolkit**, **Vue.js**
-- **HTML5**, **CSS3**, **SCSS**
+## Technologies
 
-### State Management:
-- **Redux Toolkit**, **Zustand**, **Context API**
+### Product development
 
-### Styling Frameworks:
-- **TailwindCSS**, **Styled Components**, **Mantine UI**, **Chakra UI**, **Material UI**
+React · Next.js · TypeScript · React Native · Node.js · NestJS · REST APIs · PostgreSQL · Redux Toolkit · TanStack Query
 
-### Tools:
-- **Git**, **GitHub**, **Vercel**, **Netlify**
-- **Jest**, **React Testing Library** 
+### Portfolio site
 
----
+Next.js 14 · React 18 · TypeScript · Tailwind CSS · Framer Motion · GSAP · Three.js · Sentry
 
-## 📈 What Drives Me?
+## Run locally
 
-As a graduate of **Lagos State University** with a degree in Political Science, my journey into tech has been fueled by a deep passion for innovation and problem-solving. I aim to bridge the gap between elegant design and functional development, creating products that users love.
+### Requirements
 
----
+- Node.js 22 or newer
+- npm 10 or newer
 
-## 🌐 Find Me Online
+```bash
+npm install
+```
 
-- **Portfolio**: Set `NEXT_PUBLIC_SITE_URL` to the deployed portfolio URL before building.  
-- **LinkedIn**: [Connect with Me](https://www.linkedin.com/in/rasheed-dev/)  
-- **Facebook**: [Follow Me](https://www.facebook.com/akanirasheed44)  
+Create a `.env.local` file from `.env.example` and set the public URL used for metadata, canonical links, and the sitemap:
 
----
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
 
-## 🚀 Let’s Build Something Amazing Together!
+Start the development server:
 
-If you’re looking for a developer who’s committed to excellence and innovation, let’s connect. Whether it's a fintech platform, an e-commerce site, or the next big idea, I’m here to bring it to life.
+```bash
+npm run dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000).
+
+## Available scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run lint` | Run Next.js linting |
+| `npm run build` | Create a production build |
+| `npm run start` | Serve the production build locally |
+| `npm run deploy` | Deploy to Vercel production |
+
+Set `NEXT_PUBLIC_SITE_URL` to the deployed portfolio’s public origin before creating a production build or deploying.
+
+## Project structure
+
+```text
+app/                  Next.js routes, metadata, and global styles
+components/           Portfolio sections and reusable UI
+data/                 Portfolio projects, experience, and testimonials
+lib/case-studies.ts   Case-study content and project details
+public/                Images, icons, and other static assets
+```
+
+## Contact
+
+For product, frontend, or full-stack opportunities, connect on [LinkedIn](https://www.linkedin.com/in/rasheed-dev/) or explore my work on [GitHub](https://github.com/Raashot12).
