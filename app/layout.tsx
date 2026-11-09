@@ -16,9 +16,9 @@ const goudyBookletter = Goudy_Bookletter_1911({
 const SITE_URL = getSiteUrl();
 
 const brandName = "Rashdev Solution";
-const title = `${brandName} | Rasheed Iskilu — Full-Stack Developer, Frontend Focus`;
+const title = "Rasheed Iskilu | Full-Stack Developer in Lagos";
 const description =
-  "Rashdev Solution is the portfolio of Rasheed Iskilu, a Lagos-based full-stack developer with a frontend focus, building reliable healthcare, fintech, and mobile products with React, Next.js, TypeScript, and React Native.";
+  "Lagos-based full-stack developer Rasheed Iskilu builds healthcare, fintech and operations products with React, Next.js, TypeScript and React Native.";
 
 export const metadata: Metadata = {
   metadataBase: SITE_URL,

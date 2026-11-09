@@ -7,7 +7,7 @@
 - The homepage and project case studies are included in the generated sitemap.
 - `app/robots.ts` allows public pages and points crawlers to the sitemap.
 - The homepage has Person, WebSite, ProfilePage, and project structured data. Case studies have page and breadcrumb structured data that reflects their visible copy.
-- Three crawlable case studies live at `/work/plural-health`, `/work/betpikr`, and `/work/myneohealth-visilite`.
+- Five crawlable case studies live under `/work/`: Plural Health, Betpikr, myNeoHealth and VisiLite, User Management Platform, and LIV DOT.
 - Homepage content renders without waiting for the 3D scene to initialize.
 
 ## After deployment

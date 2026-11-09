@@ -18,7 +18,7 @@ const pluralHealthSlides: ProjectCarouselSlide[] = [
     label: "NeoPharmacy / Login",
     note: "Offline-ready workflows",
     src: "/login.webp",
-    alt: "NeoPharmacy Login page(pseduo)",
+    alt: "NeoPharmacy login screen for pharmacy staff",
     width: 1672,
     height: 941,
     canvas: "pharmacy",

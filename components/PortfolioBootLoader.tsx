@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Suspense } from "react";
 
 const PortfolioPage = dynamic(() => import("./PortfolioPage"), {
-  ssr: false,
+  ssr: true,
   loading: () => null,
 });
 
@@ -58,24 +58,8 @@ export default function PortfolioBootLoader() {
         aria-live="polite"
         aria-hidden={isReady}
       >
-        <div className="portfolio-boot-loader-content">
-          <div className="portfolio-boot-loader-kicker">
-            <span className="portfolio-boot-loader-dot" aria-hidden="true" />
-            <span>Rasheed Iskilu</span>
-            <span>Frontend engineer</span>
-          </div>
-          <h1 className="portfolio-boot-loader-title">Preparing the interface.</h1>
-          <p className="portfolio-boot-loader-copy">
-            Loading the interactive workspace and product stories.
-          </p>
-          <div className="portfolio-boot-loader-track" aria-hidden="true">
-            <span />
-          </div>
-          <div className="portfolio-boot-loader-meta">
-            <span>WebGL experience</span>
-            <span>{isReady ? "Ready" : "Initialising"}</span>
-          </div>
-        </div>
+        <span className="portfolio-boot-loader-dot" aria-hidden="true" />
+        <span className="portfolio-boot-loader-label">Loading visual effects</span>
       </div>
       <div className="portfolio-boot-app">
         <Suspense fallback={null}>

@@ -1,3 +1,4 @@
+import { contentLastModified } from "@/lib/case-studies";
 import { getSiteUrlString } from "@/lib/site-url";
 
 const profileName = "Rasheed Iskilu";
@@ -5,7 +6,7 @@ const profileTitle = "Full-Stack Developer (Frontend Focus)";
 const brandName = "Rashdev Solution";
 const profileDescription =
   "Rashdev Solution is the portfolio of Rasheed Iskilu, a full-stack developer in Lagos, Nigeria with a frontend focus, building accessible, high-performance web and mobile products with React, Next.js, TypeScript, React Native and API integrations.";
-const lastModified = "2026-10-07";
+const lastModified = contentLastModified;
 
 type ProjectEntity = {
   id: string;
